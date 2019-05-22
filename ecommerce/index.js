@@ -3,6 +3,7 @@ const path = require("path");
 const bodyParser = require("body-parser");
 const boom = require('@hapi/boom');
 const debug = require('debug')('app:server');
+const helmet = require('helmet');
 
 const productsRouter = require("./routes/views/products");
 const productsApiRouter = require("./routes/api/products");
@@ -21,6 +22,7 @@ const {
 const app = express();
 
 // Middlewares
+app.use(helmet());
 app.use(bodyParser.json());
 
 const port = 3000;
