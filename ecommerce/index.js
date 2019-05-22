@@ -5,6 +5,7 @@ const boom = require('@hapi/boom');
 
 const productsRouter = require("./routes/views/products");
 const productsApiRouter = require("./routes/api/products");
+const apiAuthRouter = require('./routes/api/auth');
 
 const isRequestAjaxOrApi = require("./utils/isRequestAjaxOrApi");
 
@@ -35,6 +36,7 @@ app.get("/", (req, res, next) => res.redirect("/products"));
 
 app.use("/products", productsRouter);
 app.use("/api/products", productsApiRouter);
+app.use('/api/auth', apiAuthRouter);
 
 app.use(function(req, res, next) {
   if (isRequestAjaxOrApi(req)) {
