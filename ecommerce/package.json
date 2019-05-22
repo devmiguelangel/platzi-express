@@ -6,7 +6,8 @@
   "scripts": {
     "start": "node index",
     "dev": "nodemon -V index",
-    "test": "mocha --exit"
+    "test": "mocha --exit",
+    "test:cover": "nyc yarn run test"
   },
   "dependencies": {
     "@hapi/boom": "7.4.2",
@@ -27,8 +28,13 @@
     "chalk": "2.4.2",
     "mocha": "6.1.4",
     "nodemon": "1.19.0",
+    "nyc": "^14.1.1",
     "proxyquire": "2.1.0",
     "sinon": "7.3.2",
     "supertest": "4.0.2"
+  },
+  "nyc": {
+    "all": true,
+    "include": ["routes", "services", "lib", "utils"]
   }
 }
